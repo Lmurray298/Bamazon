@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
     user: "root",
 
-    password:"liam2898",
+    password:"",
     database: "bamazon"
 
 });
@@ -50,7 +50,7 @@ function promptUserPurchase(){
         var item= input.item_id;
         var quanity = input.quanity;
 
-        var queryStr = "SELECT * FROM products WHERE ?";
+        var queryStr = "SELECT * FROM products WHERE ?";1
 
         connection.query(queryStr, {item_id: item}, function(err, data){
             if (err) throw err;

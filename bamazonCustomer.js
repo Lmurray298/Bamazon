@@ -11,10 +11,21 @@ var connection = mysql.createConnection({
 
     user: "root",
 
-    password:"",
+    password:"liam2898",
     database: "bamazon"
 
 });
+
+function validateInput(value) {
+	var integer = Number.isInteger(parseFloat(value));
+	var sign = Math.sign(value);
+
+	if (integer && (sign === 1)) {
+		return true;
+	} else {
+		return 'Please enter a whole non-zero number.';
+	}
+}
 
 function promptUserPurchase(){
     console.log("working")
@@ -39,7 +50,7 @@ function promptUserPurchase(){
         var item= input.item_id;
         var quanity = input.quanity;
 
-        var queryStr = "SELECT * FROM prducts WHERE ?";
+        var queryStr = "SELECT * FROM products WHERE ?";
 
         connection.query(queryStr, {item_id: item}, function(err, data){
             if (err) throw err;
